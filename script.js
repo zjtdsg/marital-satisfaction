@@ -1,5 +1,5 @@
 // 测试题目数据
-const questions = [
+const defaultQuestions = [
     "我和伴侣的生活满足了我对爱情和婚姻的期待。",
     "我和伴侣重视与双方父母的关系。",
     "我可以向伴侣吐露我的任何事情。",
@@ -51,7 +51,7 @@ const questions = [
 ];
 
 // 维度定义
-const dimensions = {
+const defaultDimensions = {
     intimacy: {
         name: "亲密关系",
         questions: [6, 9, 19, 22, 30, 33, 36, 48], // 题目编号（从1开始）
@@ -84,9 +84,19 @@ const dimensions = {
     }
 };
 
+// 根据路由配置当前测试
+const testConfig = window.testConfig || {};
+const questions = Array.isArray(testConfig.questions) && testConfig.questions.length > 0
+    ? testConfig.questions
+    : defaultQuestions;
+const dimensions = testConfig.dimensions || defaultDimensions;
+const dimensionKeys = testConfig.dimensionOrder && testConfig.dimensionOrder.length
+    ? testConfig.dimensionOrder
+    : Object.keys(dimensions);
+
 // 应用状态
 let currentQuestion = 0;
-let answers = new Array(48).fill(null);
+let answers = new Array(questions.length).fill(null);
 
 // DOM元素
 const introScreen = document.getElementById('intro-screen');
@@ -227,7 +237,7 @@ function showResults() {
     const scores = {};
     
     // 计算各维度分数
-    Object.keys(dimensions).forEach(key => {
+    dimensionKeys.forEach(key => {
         const dimension = dimensions[key];
         const score = calculateScore(dimension);
         scores[key] = score;
@@ -273,7 +283,7 @@ function generateRecommendations(scores) {
     const recommendations = [];
     
     // 为每个维度生成建议
-    Object.keys(dimensions).forEach(key => {
+    dimensionKeys.forEach(key => {
         const dimension = dimensions[key];
         const score = scores[key];
         let suggestion = '';
@@ -292,7 +302,7 @@ function generateRecommendations(scores) {
     });
     
     // 总体建议
-    const averageScore = Object.values(scores).reduce((a, b) => a + b, 0) / Object.keys(scores).length;
+    const averageScore = Object.values(scores).reduce((a, b) => a + b, 0) / dimensionKeys.length;
     let overallSuggestion = '';
     
     if (averageScore >= 85) {
@@ -318,7 +328,7 @@ function generateRecommendations(scores) {
 
 // 重新测试
 restartBtn.addEventListener('click', () => {
-    answers = new Array(48).fill(null);
+    answers = new Array(questions.length).fill(null);
     currentQuestion = 0;
     resultScreen.classList.remove('active');
     introScreen.classList.add('active');

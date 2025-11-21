@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恋爱甜度测试</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="intro-screen" class="screen active">
+            <h1>恋爱甜度测试</h1>
+            <p class="intro-text">本测试包含20道题目，聚焦在情感连接、沟通协同、成长动力与支持安全感四个维度，帮助你快速了解恋爱关系的甜度与潜在提升点。</p>
+            <p class="intro-text">请选择最符合你们现实情况的选项（1=强烈不同意，7=强烈同意）：</p>
+            <ul class="option-list">
+                <li>强烈同意</li>
+                <li>同意</li>
+                <li>稍微同意</li>
+                <li>中立</li>
+                <li>稍微不同意</li>
+                <li>不同意</li>
+                <li>强烈不同意</li>
+            </ul>
+            <button id="start-btn" class="btn btn-primary">开始测试</button>
+        </div>
+
+        <div id="test-screen" class="screen">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <div class="question-counter">
+                <span id="current-question">1</span> / <span id="total-questions">20</span>
+            </div>
+            <div class="question-container">
+                <h2 id="question-text"></h2>
+                <div class="options-container">
+                    <button class="option-btn" data-value="7">强烈同意</button>
+                    <button class="option-btn" data-value="6">同意</button>
+                    <button class="option-btn" data-value="5">稍微同意</button>
+                    <button class="option-btn" data-value="4">中立</button>
+                    <button class="option-btn" data-value="3">稍微不同意</button>
+                    <button class="option-btn" data-value="2">不同意</button>
+                    <button class="option-btn" data-value="1">强烈不同意</button>
+                </div>
+            </div>
+            <div class="navigation-buttons">
+                <button id="prev-btn" class="btn btn-secondary" disabled>上一题</button>
+                <button id="next-btn" class="btn btn-primary" disabled>下一题</button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <h1>测试结果</h1>
+            <div class="results-container">
+                <div class="dimension-result" id="dimension-results"></div>
+            </div>
+            <div class="recommendations" id="recommendations"></div>
+            <button id="restart-btn" class="btn btn-primary">重新测试</button>
+        </div>
+    </div>
+    <script>
+        window.testConfig = {
+            testId: 'love_test',
+            questions: [
+                "我和伴侣每天都会交流各自的近况。",
+                "我们会通过拥抱、牵手等肢体动作来表达亲密。",
+                "遇到矛盾时，我们能在当天或者次日给出解决方案。",
+                "我们会计划一些小惊喜或约会保持感情新鲜度。",
+                "我能坦诚表达自己的需求与边界。",
+                "伴侣愿意耐心倾听我的想法并给出回应。",
+                "我们会庆祝彼此的重要时刻（生日、纪念日等）。",
+                "我们能尊重彼此的个人空间与休息时间。",
+                "我们常常合作完成任务或制定计划（如旅行、学习）。",
+                "即使工作忙碌，也会预留专属的相处时间。",
+                "我感到自己被伴侣欣赏与肯定。",
+                "面对未来（如事业、城市、家庭），我们有共同规划。",
+                "我们能客观看待对方的缺点并给与善意反馈。",
+                "伴侣愿意为这段关系学习新技能或尝试新的相处方式。",
+                "我对这段关系拥有稳定的安全感。",
+                "我们会在金钱观或价值观上充分沟通并尊重差异。",
+                "我愿意主动为伴侣制造惊喜或表达感激。",
+                "我们会定期回顾这段关系的状态并讨论改进方向。",
+                "当我情绪低落时，会第一时间寻求伴侣的支持。",
+                "我们在亲密互动时能互相尊重彼此的界限与需求。"
+            ],
+            dimensions: {
+                connection: {
+                    name: "情感连接",
+                    questions: [1, 2, 4, 7, 10, 11, 15, 20],
+                    negative: []
+                },
+                communication: {
+                    name: "沟通互动",
+                    questions: [3, 5, 6, 8, 13, 16, 18, 19],
+                    negative: []
+                },
+                growth: {
+                    name: "共同成长",
+                    questions: [9, 12, 14, 17],
+                    negative: []
+                },
+                support: {
+                    name: "支持与安全感",
+                    questions: [15, 16, 18, 19, 20],
+                    negative: []
+                }
+            },
+            dimensionOrder: ["connection", "communication", "growth", "support"]
+        };
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>
+

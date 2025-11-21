@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>婚姻满意度测试</title>
-    <link rel="stylesheet" href="style.css">
+    <title>亲密关系测试集合</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .landing {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 520px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #f0f0ff;
+        }
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 1.05em;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        small {
+            display: block;
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div id="intro-screen" class="screen active">
-            <h1>婚姻满意度测试</h1>
-            <p class="intro-text">本测试包含48道题目，将帮助您了解在亲密关系、忠诚、家庭责任、经济管理、日常生活和情感联系六个维度上的婚姻满意度。</p>
-            <p class="intro-text">请根据您的实际情况，选择最符合您想法的答案。每道题有七个选项：</p>
-            <ul class="option-list">
-                <li>强烈同意</li>
-                <li>同意</li>
-                <li>稍微同意</li>
-                <li>中立</li>
-                <li>稍微不同意</li>
-                <li>不同意</li>
-                <li>强烈不同意</li>
-            </ul>
-            <button id="start-btn" class="btn btn-primary">开始测试</button>
+    <div class="landing">
+        <h1>亲密关系测试集合</h1>
+        <p>请选择需要体验的测试项目。不同的路由会加载完全独立的题目与分析模型，方便根据场景切换。</p>
+        <div class="link-list">
+            <a href="marital_test/">婚姻满意度测试（/marital_test）</a>
+            <a href="love_test/">恋爱甜度测试（/love_test）</a>
         </div>
-
-        <div id="test-screen" class="screen">
-            <div class="progress-bar">
-                <div id="progress-fill" class="progress-fill"></div>
-            </div>
-            <div class="question-counter">
-                <span id="current-question">1</span> / <span id="total-questions">48</span>
-            </div>
-            <div class="question-container">
-                <h2 id="question-text"></h2>
-                <div class="options-container">
-                    <button class="option-btn" data-value="7">强烈同意</button>
-                    <button class="option-btn" data-value="6">同意</button>
-                    <button class="option-btn" data-value="5">稍微同意</button>
-                    <button class="option-btn" data-value="4">中立</button>
-                    <button class="option-btn" data-value="3">稍微不同意</button>
-                    <button class="option-btn" data-value="2">不同意</button>
-                    <button class="option-btn" data-value="1">强烈不同意</button>
-                </div>
-            </div>
-            <div class="navigation-buttons">
-                <button id="prev-btn" class="btn btn-secondary" disabled>上一题</button>
-                <button id="next-btn" class="btn btn-primary" disabled>下一题</button>
-            </div>
-        </div>
-
-        <div id="result-screen" class="screen">
-            <h1>测试结果</h1>
-            <div class="results-container">
-                <div class="dimension-result" id="dimension-results"></div>
-            </div>
-            <div class="recommendations" id="recommendations"></div>
-            <button id="restart-btn" class="btn btn-primary">重新测试</button>
-        </div>
+        <small>可直接访问对应路由，例如 /marital_test 或 /love_test。</small>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
