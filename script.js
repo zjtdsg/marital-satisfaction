@@ -278,14 +278,14 @@ function generateRecommendations(scores) {
         const score = scores[key];
         let suggestion = '';
         
-        if (score >= 80) {
-            suggestion = `${dimension.name}维度得分${score}分，表现优秀！继续保持良好的沟通和互动。`;
-        } else if (score >= 60) {
-            suggestion = `${dimension.name}维度得分${score}分，表现良好，但仍有提升空间。建议多关注此方面的沟通和改善。`;
-        } else if (score >= 40) {
-            suggestion = `${dimension.name}维度得分${score}分，需要关注。建议与伴侣坦诚沟通，共同寻找改善方法。`;
+        if (score >= 85) {
+            suggestion = `${dimension.name}维度得分${score}分，表现非常优秀！你们在这一领域展现了充足的信任与支持，保持这种默契会让关系更加稳固。可以继续用仪式感和诚恳沟通去庆祝彼此的付出。`;
+        } else if (score >= 70) {
+            suggestion = `${dimension.name}维度得分${score}分，整体状态良好。可以在保持优势的同时，主动留意一些细节，例如预留更多高质量的陪伴时间或适度分享彼此的想法，让这一领域更上一层楼。`;
+        } else if (score >= 50) {
+            suggestion = `${dimension.name}维度得分${score}分，说明存在一些波动。建议把握“先肯定再提出需求”的沟通方式，明确哪些行为让你感到不安，并与伴侣一起设计可落实的小目标。`;
         } else {
-            suggestion = `${dimension.name}维度得分${score}分，需要重点关注。建议寻求专业咨询或与伴侣深入沟通，制定改善计划。`;
+            suggestion = `${dimension.name}维度得分${score}分，需要重点提升。先肯定彼此付出的部分，再坦诚表达真实感受，必要时可寻求第三方（如家人、朋友或专业咨询师）协助，共同制定阶段性改善计划。`;
         }
         
         recommendations.push(suggestion);
@@ -295,14 +295,14 @@ function generateRecommendations(scores) {
     const averageScore = Object.values(scores).reduce((a, b) => a + b, 0) / Object.keys(scores).length;
     let overallSuggestion = '';
     
-    if (averageScore >= 80) {
-        overallSuggestion = '总体而言，您的婚姻满意度很高！继续保持良好的沟通和互动，定期进行情感交流。';
-    } else if (averageScore >= 60) {
-        overallSuggestion = '总体而言，您的婚姻满意度良好。建议关注得分较低的维度，与伴侣共同制定改善计划。';
-    } else if (averageScore >= 40) {
-        overallSuggestion = '总体而言，您的婚姻满意度需要关注。建议与伴侣进行深入沟通，必要时寻求专业婚姻咨询师的帮助。';
+    if (averageScore >= 85) {
+        overallSuggestion = '总体而言，你们的婚姻满意度处于非常健康的水平，彼此能感受到足够的理解与陪伴。继续保持真诚沟通与共同成长的节奏，可以把生活过得更有温度与仪式感。';
+    } else if (averageScore >= 70) {
+        overallSuggestion = '总体而言，你们的关系稳健温暖。建议将注意力放在得分稍低的维度，定期安排“关系体检”，通过共读、旅行或兴趣体验来增强联结，让优点更为突出。';
+    } else if (averageScore >= 50) {
+        overallSuggestion = '整体满意度存在起伏，但仍有良好基础。尝试把对彼此的期待具体化，设定小而可行的目标，并约定复盘时间；如遇卡点，可借助专业人士或信任的亲友作为支持。';
     } else {
-        overallSuggestion = '总体而言，您的婚姻满意度较低。强烈建议寻求专业婚姻咨询师的帮助，与伴侣共同面对和解决问题。';
+        overallSuggestion = '目前婚姻满意度偏低，可能需要更系统的支持。建议先营造安全的沟通环境，正视双方情绪与需求，并及时寻求婚姻家庭咨询等专业力量，帮助你们重建信任与合作。';
     }
     
     recommendations.push(`<strong>总体建议：</strong>${overallSuggestion}`);

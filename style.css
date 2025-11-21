@@ -226,7 +226,6 @@ h2 {
     padding: 16px;
     background: #f8f9fa;
     border-radius: 10px;
-    border-left: 4px solid #667eea;
 }
 
 .dimension-name {
@@ -535,7 +534,6 @@ h2 {
     .dimension-result {
         padding: 20px;
         margin-bottom: 25px;
-        border-left-width: 5px;
     }
 
     .dimension-name {
